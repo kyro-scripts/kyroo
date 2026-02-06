@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubHub - Free Subdomains</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect x="4" y="4" width="24" height="24" rx="6" fill="url(#logo-gradient)"/>
+                    <path d="M12 16L15 19L20 13" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <defs>
+                        <linearGradient id="logo-gradient" x1="4" y1="4" x2="28" y2="28">
+                            <stop offset="0%" stop-color="#6366f1"/>
+                            <stop offset="100%" stop-color="#8b5cf6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span>SubHub</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#browse" class="nav-link">Browse</a>
+                <a href="#contribute" class="nav-link">Contribute</a>
+                <a href="#docs" class="nav-link">Docs</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Free & Open Source</span>
+            </div>
+            <h1 class="hero-title">
+                Claim Your Free
+                <span class="gradient-text">Subdomain</span>
+            </h1>
+            <p class="hero-subtitle">
+                Get up to 5 free subdomains instantly. No credit card required.
+                <br>Perfect for developers, students, and side projects.
+            </p>
+
+            <div class="search-container">
+                <div class="search-box">
+                    <input 
+                        type="text" 
+                        id="subdomain-input" 
+                        placeholder="Enter your desired subdomain..."
+                        autocomplete="off"
+                    >
+                    <div class="domain-selector">
+                        <select id="domain-select">
+                            <option value="subhub.dev">.subhub.dev</option>
+                            <option value="free.io">.free.io</option>
+                            <option value="mysite.app">.mysite.app</option>
+                            <option value="dev.zone">.dev.zone</option>
+                            <option value="cloud.link">.cloud.link</option>
+                        </select>
+                    </div>
+                    <button class="search-btn" id="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16zM19 19l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Check
+                    </button>
+                </div>
+                <div class="availability-results" id="availability-results"></div>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-number">12,453</div>
+                    <div class="stat-label">Active Subdomains</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2,891</div>
+                    <div class="stat-label">Happy Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">48</div>
+                    <div class="stat-label">Available Domains</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="browse" class="browse-section">
+            <div class="section-header">
+                <h2 class="section-title">Browse Available Domains</h2>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="popular">Popular</button>
+                    <button class="filter-tab" data-filter="new">New</button>
+                </div>
+            </div>
+
+            <div class="domains-grid" id="domains-grid">
+                <!-- Domain cards will be generated by JavaScript -->
+            </div>
+        </section>
+
+        <section id="contribute" class="contribute-section">
+            <div class="contribute-card">
+                <div class="contribute-header">
+                    <h2>Contribute a Domain</h2>
+                    <p>Share your domain with the community and help others get started</p>
+                </div>
+                <form class="contribute-form" id="contribute-form">
+                    <div class="form-group">
+                        <label for="domain-name">Domain Name</label>
+                        <input 
+                            type="text" 
+                            id="domain-name" 
+                            placeholder="example.com"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="dns-provider">DNS Provider</label>
+                        <select id="dns-provider" required>
+                            <option value="">Select provider...</option>
+                            <option value="cloudflare">Cloudflare</option>
+                            <option value="route53">AWS Route 53</option>
+                            <option value="namecheap">Namecheap</option>
+                            <option value="godaddy">GoDaddy</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Contact Email</label>
+                        <input 
+                            type="email" 
+                            id="contact-email" 
+                            placeholder="your@email.com"
+                            required
+                        >
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        Submit Domain
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section class="my-subdomains" id="my-subdomains">
+            <div class="section-header">
+                <h2 class="section-title">My Subdomains</h2>
+                <span class="subdomain-count" id="subdomain-count">0/5 used</span>
+            </div>
+            <div class="subdomains-list" id="subdomains-list">
+                <div class="empty-state">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                        <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4" opacity="0.3"/>
+                        <path d="M32 20v24M20 32h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <p>No subdomains claimed yet</p>
+                    <span>Search for a subdomain above to get started</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                        <rect x="4" y="4" width="24" height="24" rx="6" fill="url(#footer-logo-gradient)"/>
+                        <path d="M12 16L15 19L20 13" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <defs>
+                            <linearGradient id="footer-logo-gradient" x1="4" y1="4" x2="28" y2="28">
+                                <stop offset="0%" stop-color="#6366f1"/>
+                                <stop offset="100%" stop-color="#8b5cf6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span>SubHub</span>
+                </div>
+                <p>Free subdomain hosting for everyone.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <a href="#browse">Browse Domains</a>
+                    <a href="#contribute">Contribute</a>
+                    <a href="#docs">Documentation</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="#">API</a>
+                    <a href="#">GitHub</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">License</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 SubHub. Open source and free forever.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for claiming subdomain -->
+    <div class="modal" id="claim-modal">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <h3 class="modal-title">Claim Subdomain</h3>
+            <div class="modal-subdomain" id="modal-subdomain"></div>
+            <form class="modal-form" id="claim-form">
+                <div class="form-group">
+                    <label for="target-url">Target URL</label>
+                    <input 
+                        type="url" 
+                        id="target-url" 
+                        placeholder="https://example.com"
+                        required
+                    >
+                    <span class="form-hint">Where should this subdomain point to?</span>
+                </div>
+                <div class="form-group">
+                    <label for="record-type">Record Type</label>
+                    <select id="record-type" required>
+                        <option value="CNAME">CNAME</option>
+                        <option value="A">A Record</option>
+                        <option value="URL">URL Redirect</option>
+                    </select>
+                </div>
+                <button type="submit" class="modal-submit">
+                    Claim Subdomain
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
